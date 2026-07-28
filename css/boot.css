@@ -1,0 +1,113 @@
+/* Boot Screen CSS */
+#bootScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#bootScreen.fade-out {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+.boot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: fadeIn 0.8s ease;
+}
+
+.boot-logo {
+    font-size: 80px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.boot-title {
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.boot-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.boot-loader {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.boot-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--purple));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.boot-status {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+/* Loading animation for boot */
+.boot-dots::after {
+    content: '';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+    25% {
+        content: '.';
+    }
+    50% {
+        content: '..';
+    }
+    75% {
+        content: '...';
+    }
+    100% {
+        content: '';
+    }
+}
+
+/* Responsive Boot */
+@media (max-width: 768px) {
+    .boot-logo {
+        font-size: 60px;
+    }
+    
+    .boot-title {
+        font-size: 32px;
+    }
+    
+    .boot-loader {
+        width: 200px;
+    }
+}

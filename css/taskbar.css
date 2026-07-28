@@ -1,0 +1,214 @@
+/* Taskbar CSS */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 56px;
+    background: rgba(11, 15, 25, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    z-index: 9997;
+    gap: 8px;
+}
+
+.taskbar-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.taskbar-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+}
+
+.taskbar-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.taskbar-btn:active {
+    transform: scale(0.95);
+}
+
+.start-btn {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.start-btn .start-icon {
+    font-size: 20px;
+}
+
+.taskbar-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 0 8px;
+}
+
+.taskbar-app {
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid transparent;
+}
+
+.taskbar-app:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.taskbar-app.active {
+    background: rgba(0, 191, 255, 0.1);
+    color: var(--primary);
+    border-color: rgba(0, 191, 255, 0.2);
+}
+
+.taskbar-app .app-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: none;
+}
+
+.taskbar-app.active .app-indicator {
+    display: block;
+}
+
+.taskbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.taskbar-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    height: 36px;
+}
+
+.status-icon {
+    font-size: 16px;
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+}
+
+.status-icon:hover {
+    color: var(--text-primary);
+}
+
+.taskbar-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 8px;
+    height: 36px;
+    justify-content: center;
+    cursor: default;
+}
+
+#clock {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+#date {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+/* Taskbar Animations */
+.taskbar-app {
+    animation: slideUp 0.2s ease;
+}
+
+/* Responsive Taskbar */
+@media (max-width: 768px) {
+    .taskbar {
+        height: 48px;
+        padding: 0 8px;
+    }
+    
+    .taskbar-btn {
+        padding: 4px 8px;
+        font-size: 12px;
+        height: 32px;
+    }
+    
+    .start-btn span:last-child {
+        display: none;
+    }
+    
+    .taskbar-app {
+        font-size: 11px;
+        padding: 2px 8px;
+        height: 28px;
+    }
+    
+    .taskbar-clock #clock {
+        font-size: 11px;
+    }
+    
+    .taskbar-clock #date {
+        font-size: 9px;
+    }
+    
+    .taskbar-status .status-icon {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .taskbar-center {
+        gap: 2px;
+    }
+    
+    .taskbar-app {
+        font-size: 10px;
+        padding: 2px 6px;
+        height: 24px;
+    }
+    
+    .taskbar-right .taskbar-btn {
+        padding: 4px 6px;
+    }
+    
+    .taskbar-clock {
+        padding: 0 4px;
+    }
+}/* Taskbar CSS */ 

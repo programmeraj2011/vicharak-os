@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicharak OS</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/boot.css" />
+    <link rel="stylesheet" href="css/desktop.css" />
+    <link rel="stylesheet" href="css/taskbar.css" />
+    <link rel="stylesheet" href="css/windows.css" />
+    <link rel="stylesheet" href="css/themes/dark.css" />
+    
+    <!-- App Styles -->
+    <link rel="stylesheet" href="css/apps/ai.css" />
+    <link rel="stylesheet" href="css/apps/explorer.css" />
+    <link rel="stylesheet" href="css/apps/notes.css" />
+    <link rel="stylesheet" href="css/apps/terminal.css" />
+    <link rel="stylesheet" href="css/apps/browser.css" />
+    <link rel="stylesheet" href="css/apps/calculator.css" />
+    <link rel="stylesheet" href="css/apps/calendar.css" />
+    <link rel="stylesheet" href="css/apps/music.css" />
+    <link rel="stylesheet" href="css/apps/gallery.css" />
+    <link rel="stylesheet" href="css/apps/settings.css" />
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div id="bootScreen">
+        <div class="boot-container">
+            <div class="boot-logo">🧠</div>
+            <h1 class="boot-title">Vicharak OS</h1>
+            <div class="boot-subtitle">AI-Powered Desktop</div>
+            <div class="boot-loader">
+                <div class="boot-progress"></div>
+            </div>
+            <div class="boot-status">Initializing...</div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" style="display:none;">
+        <div class="login-container">
+            <div class="login-box glass">
+                <div class="login-logo">🧠</div>
+                <h2>Welcome to Vicharak OS</h2>
+                <p class="login-time" id="loginTime"></p>
+                <div class="login-user">
+                    <img src="assets/icons/user.svg" alt="User" class="login-avatar" />
+                    <span>Guest User</span>
+                </div>
+                <button id="loginBtn" class="login-btn">Enter Desktop →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop" style="display:none;">
+        <!-- Wallpaper -->
+        <div id="wallpaper"></div>
+
+        <!-- Desktop Icons -->
+        <div id="desktopIcons" class="desktop-icons">
+            <div class="desktop-icon" data-app="ai">
+                <div class="icon-wrapper">🧠</div>
+                <span>Vicharak AI</span>
+            </div>
+            <div class="desktop-icon" data-app="explorer">
+                <div class="icon-wrapper">📁</div>
+                <span>File Explorer</span>
+            </div>
+            <div class="desktop-icon" data-app="notes">
+                <div class="icon-wrapper">📝</div>
+                <span>Notes</span>
+            </div>
+            <div class="desktop-icon" data-app="terminal">
+                <div class="icon-wrapper">💻</div>
+                <span>Terminal</span>
+            </div>
+            <div class="desktop-icon" data-app="browser">
+                <div class="icon-wrapper">🌐</div>
+                <span>Browser</span>
+            </div>
+            <div class="desktop-icon" data-app="calculator">
+                <div class="icon-wrapper">🧮</div>
+                <span>Calculator</span>
+            </div>
+            <div class="desktop-icon" data-app="calendar">
+                <div class="icon-wrapper">📅</div>
+                <span>Calendar</span>
+            </div>
+            <div class="desktop-icon" data-app="music">
+                <div class="icon-wrapper">🎵</div>
+                <span>Music Player</span>
+            </div>
+            <div class="desktop-icon" data-app="gallery">
+                <div class="icon-wrapper">🖼️</div>
+                <span>Gallery</span>
+            </div>
+            <div class="desktop-icon" data-app="settings">
+                <div class="icon-wrapper">⚙️</div>
+                <span>Settings</span>
+            </div>
+        </div>
+
+        <!-- Widgets -->
+        <div id="widgets" class="widgets-container">
+            <div class="widget weather-widget">
+                <div class="widget-header">🌤️ Weather</div>
+                <div class="widget-content">
+                    <div class="weather-temp">24°C</div>
+                    <div class="weather-desc">Partly Cloudy</div>
+                    <div class="weather-location">New York, NY</div>
+                </div>
+            </div>
+            <div class="widget clock-widget">
+                <div class="widget-header">🕐 Clock</div>
+                <div class="widget-content">
+                    <div class="clock-time" id="widgetClock">12:00:00</div>
+                    <div class="clock-date" id="widgetDate">January 1, 2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Window Container -->
+        <div id="windowContainer" class="window-container"></div>
+
+        <!-- Context Menu -->
+        <div id="contextMenu" class="context-menu" style="display:none;">
+            <div class="context-item" data-action="refresh">🔄 Refresh</div>
+            <div class="context-item" data-action="new-folder">📁 New Folder</div>
+            <div class="context-item" data-action="new-note">📝 New Note</div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="settings">⚙️ Settings</div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="paste">📋 Paste</div>
+        </div>
+
+        <!-- Search Overlay (Spotlight) -->
+        <div id="searchOverlay" class="search-overlay" style="display:none;">
+            <div class="search-container">
+                <div class="search-box glass">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search Vicharak OS..." autofocus />
+                    <span class="search-shortcut">Ctrl + Space</span>
+                </div>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Notification Center -->
+        <div id="notificationCenter" class="notification-center" style="display:none;">
+            <div class="notification-header">
+                <h3>Notifications</h3>
+                <button id="clearNotifications">Clear All</button>
+            </div>
+            <div id="notificationList" class="notification-list"></div>
+        </div>
+
+        <!-- Control Center -->
+        <div id="controlCenter" class="control-center" style="display:none;">
+            <div class="control-grid">
+                <div class="control-item" data-control="wifi">
+                    <span class="control-icon">📶</span>
+                    <span>Wi-Fi</span>
+                    <div class="control-toggle active"></div>
+                </div>
+                <div class="control-item" data-control="bluetooth">
+                    <span class="control-icon">🔵</span>
+                    <span>Bluetooth</span>
+                    <div class="control-toggle"></div>
+                </div>
+                <div class="control-item" data-control="volume">
+                    <span class="control-icon">🔊</span>
+                    <span>Volume</span>
+                    <input type="range" min="0" max="100" value="75" />
+                </div>
+                <div class="control-item" data-control="brightness">
+                    <span class="control-icon">☀️</span>
+                    <span>Brightness</span>
+                    <input type="range" min="0" max="100" value="80" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div id="taskbar" class="taskbar">
+            <div class="taskbar-left">
+                <button id="startBtn" class="taskbar-btn start-btn">
+                    <span class="start-icon">🧠</span>
+                    <span>Start</span>
+                </button>
+                <button id="searchBtn" class="taskbar-btn">
+                    <span>🔍</span>
+                </button>
+            </div>
+            
+            <div id="taskbarApps" class="taskbar-center"></div>
+            
+            <div class="taskbar-right">
+                <button id="widgetsBtn" class="taskbar-btn" title="Widgets">📊</button>
+                <button id="notificationBtn" class="taskbar-btn" title="Notifications">🔔</button>
+                <button id="controlBtn" class="taskbar-btn" title="Control Center">⚡</button>
+                <div class="taskbar-status">
+                    <span class="status-icon">📶</span>
+                    <span class="status-icon">🔊</span>
+                    <span class="status-icon">🔋</span>
+                </div>
+                <div class="taskbar-clock">
+                    <span id="clock">12:00</span>
+                    <span id="date">Jan 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div id="startMenu" class="start-menu" style="display:none;">
+            <div class="start-menu-container glass">
+                <div class="start-header">
+                    <div class="start-user">
+                        <img src="assets/icons/user.svg" alt="User" />
+                        <span>Guest User</span>
+                    </div>
+                    <button id="startPowerBtn" class="start-power-btn">⏻</button>
+                </div>
+                <div class="start-search">
+                    <input type="text" placeholder="Search apps..." id="startSearch" />
+                </div>
+                <div class="start-apps-grid">
+                    <div class="start-app" data-app="ai">🧠 AI</div>
+                    <div class="start-app" data-app="explorer">📁 Explorer</div>
+                    <div class="start-app" data-app="notes">📝 Notes</div>
+                    <div class="start-app" data-app="terminal">💻 Terminal</div>
+                    <div class="start-app" data-app="browser">🌐 Browser</div>
+                    <div class="start-app" data-app="calculator">🧮 Calculator</div>
+                    <div class="start-app" data-app="calendar">📅 Calendar</div>
+                    <div class="start-app" data-app="music">🎵 Music</div>
+                    <div class="start-app" data-app="gallery">🖼️ Gallery</div>
+                    <div class="start-app" data-app="settings">⚙️ Settings</div>
+                </div>
+                <div class="start-footer">
+                    <button id="startShutdown">⏻ Shutdown</button>
+                    <button id="startRestart">🔄 Restart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/notifications.js"></script>
+    <script src="js/utils/shortcuts.js"></script>
+    <script src="js/utils/widgets.js"></script>
+    <script src="js/core/aiAssistant.js"></script>
+    <script src="js/core/fileSystem.js"></script>
+    <script src="js/core/themeManager.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="js/desktop.js"></script>
+    <script src="js/taskbar.js"></script>
+    <script src="js/windowManager.js"></script>
+    <script src="js/apps/ai.js"></script>
+    <script src="js/apps/explorer.js"></script>
+    <script src="js/apps/notes.js"></script>
+    <script src="js/apps/terminal.js"></script>
+    <script src="js/apps/browser.js"></script>
+    <script src="js/apps/calculator.js"></script>
+    <script src="js/apps/calendar.js"></script>
+    <script src="js/apps/music.js"></script>
+    <script src="js/apps/gallery.js"></script>
+    <script src="js/apps/settings.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

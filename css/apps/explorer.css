@@ -1,0 +1,289 @@
+/* Explorer App CSS */ 
+/* File Explorer App CSS */
+.explorer-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 400px;
+}
+
+.explorer-toolbar {
+    display: flex;
+    gap: 6px;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.explorer-toolbar button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.explorer-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.explorer-toolbar button:active {
+    transform: scale(0.95);
+}
+
+.explorer-toolbar .path-bar {
+    flex: 1;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.explorer-content {
+    flex: 1;
+    display: flex;
+    gap: 12px;
+    min-height: 300px;
+}
+
+.explorer-sidebar {
+    width: 180px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.explorer-sidebar-item {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.explorer-sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.explorer-sidebar-item.active {
+    background: rgba(0, 191, 255, 0.1);
+    color: var(--primary);
+}
+
+.explorer-files {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    overflow-y: auto;
+    align-content: start;
+}
+
+.explorer-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+    gap: 6px;
+}
+
+.explorer-file:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.explorer-file .file-icon {
+    font-size: 32px;
+}
+
+.explorer-file .file-name {
+    font-size: 12px;
+    color: var(--text-secondary);
+    word-wrap: break-word;
+    max-width: 80px;
+    line-height: 1.2;
+}
+
+.explorer-file .file-size {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.explorer-file.selected {
+    background: rgba(0, 191, 255, 0.1);
+    border: 1px solid rgba(0, 191, 255, 0.2);
+}
+
+.explorer-file .file-actions {
+    display: none;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.explorer-file:hover .file-actions {
+    display: flex;
+}
+
+.explorer-file .file-actions button {
+    padding: 2px 6px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s ease;
+}
+
+.explorer-file .file-actions button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.explorer-file .file-actions .delete-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+}
+
+/* Explorer modals */
+.explorer-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.explorer-modal {
+    background: rgba(11, 15, 25, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    min-width: 320px;
+    max-width: 90vw;
+    animation: slideUp 0.3s ease;
+}
+
+.explorer-modal h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.explorer-modal input {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.explorer-modal input:focus {
+    border-color: var(--primary);
+}
+
+.explorer-modal .modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.explorer-modal .modal-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 14px;
+}
+
+.explorer-modal .modal-actions .cancel-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+.explorer-modal .modal-actions .cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.explorer-modal .modal-actions .confirm-btn {
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+}
+
+.explorer-modal .modal-actions .confirm-btn:hover {
+    box-shadow: 0 4px 20px rgba(0, 191, 255, 0.3);
+}
+
+/* Responsive Explorer */
+@media (max-width: 768px) {
+    .explorer-sidebar {
+        display: none;
+    }
+    
+    .explorer-files {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .explorer-toolbar button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    
+    .explorer-file .file-icon {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .explorer-files {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 4px;
+    }
+    
+    .explorer-file {
+        padding: 8px 4px;
+    }
+    
+    .explorer-file .file-name {
+        font-size: 10px;
+        max-width: 60px;
+    }
+}

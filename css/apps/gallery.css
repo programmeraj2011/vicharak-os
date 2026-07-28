@@ -1,0 +1,226 @@
+/* Gallery App CSS */ 
+/* Gallery App CSS */
+.gallery-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 400px;
+    padding: 8px;
+}
+
+.gallery-toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gallery-toolbar button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.gallery-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.gallery-toolbar .upload-btn {
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+}
+
+.gallery-toolbar .upload-btn:hover {
+    box-shadow: 0 4px 20px rgba(0, 191, 255, 0.3);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px;
+    align-content: start;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid transparent;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item .item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.gallery-item .item-overlay .item-name {
+    font-size: 12px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gallery-item .item-overlay .item-delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 0, 0, 0.3);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s ease;
+}
+
+.gallery-item .item-overlay .item-delete:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+/* Gallery Lightbox */
+.gallery-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.3s ease;
+}
+
+.gallery-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-lightbox .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.15s ease;
+}
+
+.gallery-lightbox .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery-lightbox .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.15s ease;
+}
+
+.gallery-lightbox .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery-lightbox .nav-btn.prev {
+    left: 20px;
+}
+
+.gallery-lightbox .nav-btn.next {
+    right: 20px;
+}
+
+.gallery-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-muted);
+}
+
+.gallery-empty .empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.gallery-empty .empty-text {
+    font-size: 18px;
+}
+
+/* Responsive Gallery */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+    }
+    
+    .gallery-lightbox .nav-btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 6px;
+    }
+}

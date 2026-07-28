@@ -1,0 +1,468 @@
+/* Light Theme */ 
+/* Light Theme - Vicharak OS */
+:root {
+    /* Background Colors */
+    --bg-primary: #F0F2F5;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #E8EAED;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    
+    /* Text Colors */
+    --text-primary: #0B0F19;
+    --text-secondary: rgba(11, 15, 25, 0.7);
+    --text-muted: rgba(11, 15, 25, 0.4);
+    
+    /* Accent Colors (Kept the same for brand consistency) */
+    --accent-primary: #00BFFF;
+    --accent-secondary: #7C3AED;
+    --accent-success: #22C55E;
+    --accent-warning: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-info: #3B82F6;
+    
+    /* Border Colors */
+    --border-color: rgba(11, 15, 25, 0.08);
+    --border-hover: rgba(11, 15, 25, 0.15);
+    
+    /* Shadow Colors */
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-glow: rgba(0, 191, 255, 0.1);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    
+    /* Scrollbar */
+    --scrollbar-track: rgba(11, 15, 25, 0.05);
+    --scrollbar-thumb: #00BFFF;
+    --scrollbar-thumb-hover: #0099CC;
+    
+    /* Selection */
+    --selection-bg: #00BFFF;
+    --selection-color: #FFFFFF;
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+    
+    /* Font */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Courier New', monospace;
+}
+
+/* Light Theme Specific Overrides */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Glassmorphism Enhancement for Light Theme */
+.glass-light {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Selection Color */
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Input Fields in Light Theme */
+input, textarea, select {
+    background: rgba(11, 15, 25, 0.05);
+    border-color: rgba(11, 15, 25, 0.1);
+    color: var(--text-primary);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.1);
+}
+
+/* Button Variations in Light Theme */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 20px rgba(0, 191, 255, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(11, 15, 25, 0.05);
+    color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background: rgba(11, 15, 25, 0.1);
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--accent-danger);
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.btn-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--accent-success);
+}
+
+.btn-success:hover {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+/* Card Styles for Light Theme */
+.card {
+    background: rgba(11, 15, 25, 0.02);
+    border: 1px solid rgba(11, 15, 25, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.card:hover {
+    background: rgba(11, 15, 25, 0.03);
+    border-color: rgba(11, 15, 25, 0.08);
+}
+
+/* Highlight Animations */
+.highlight-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 191, 255, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 191, 255, 0.1);
+    }
+}
+
+/* Tooltip in Light Theme */
+.tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+    color: var(--text-primary);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Dropdown in Light Theme */
+.dropdown {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+    padding: 8px 12px;
+}
+
+.dropdown-item:hover {
+    background: rgba(11, 15, 25, 0.05);
+    color: var(--text-primary);
+}
+
+/* Modal in Light Theme */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading States in Light Theme */
+.loading-spinner {
+    border: 3px solid rgba(11, 15, 25, 0.1);
+    border-top-color: var(--accent-primary);
+}
+
+.loading-shimmer {
+    background: linear-gradient(90deg, 
+        rgba(11, 15, 25, 0.02) 25%, 
+        rgba(11, 15, 25, 0.05) 50%, 
+        rgba(11, 15, 25, 0.02) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Notifications in Light Theme */
+.notification {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.notification.info {
+    border-left: 4px solid var(--accent-info);
+}
+
+.notification.success {
+    border-left: 4px solid var(--accent-success);
+}
+
+.notification.warning {
+    border-left: 4px solid var(--accent-warning);
+}
+
+.notification.error {
+    border-left: 4px solid var(--accent-danger);
+}
+
+/* Progress Bar in Light Theme */
+.progress-bar {
+    background: rgba(11, 15, 25, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .progress-fill {
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Toggle Switch in Light Theme */
+.toggle-switch {
+    background: rgba(11, 15, 25, 0.1);
+}
+
+.toggle-switch.active {
+    background: var(--accent-primary);
+}
+
+/* Badge in Light Theme */
+.badge {
+    background: rgba(11, 15, 25, 0.05);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+.badge-primary {
+    background: rgba(0, 191, 255, 0.15);
+    color: var(--accent-primary);
+}
+
+.badge-success {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--accent-success);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-warning);
+}
+
+.badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-danger);
+}
+
+/* Desktop specific overrides for Light Theme */
+#wallpaper {
+    opacity: 0.9;
+}
+
+.taskbar {
+    background: rgba(255, 255, 255, 0.85);
+    border-top: 1px solid rgba(11, 15, 25, 0.08);
+}
+
+.window {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+}
+
+.window.focused {
+    box-shadow: 0 8px 40px rgba(0, 191, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 191, 255, 0.2);
+}
+
+.window-titlebar {
+    background: rgba(11, 15, 25, 0.03);
+    border-bottom: 1px solid rgba(11, 15, 25, 0.05);
+}
+
+.window-control:hover {
+    background: rgba(11, 15, 25, 0.05);
+    color: var(--text-primary);
+}
+
+.window-control.close:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--accent-danger);
+}
+
+/* Desktop Icons in Light Theme */
+.desktop-icon:hover {
+    background: rgba(11, 15, 25, 0.05);
+}
+
+.desktop-icon .icon-wrapper {
+    background: rgba(11, 15, 25, 0.03);
+}
+
+.desktop-icon:hover .icon-wrapper {
+    background: rgba(11, 15, 25, 0.08);
+}
+
+.desktop-icon span {
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Widgets in Light Theme */
+.widget {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(11, 15, 25, 0.05);
+}
+
+.widget:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Context Menu in Light Theme */
+.context-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.context-item:hover {
+    background: rgba(0, 191, 255, 0.05);
+}
+
+.context-divider {
+    background: rgba(11, 15, 25, 0.05);
+}
+
+/* Start Menu in Light Theme */
+.start-menu-container {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(11, 15, 25, 0.08);
+}
+
+.start-app:hover {
+    background: rgba(11, 15, 25, 0.05);
+}
+
+/* Search Overlay in Light Theme */
+.search-overlay {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.search-box {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.search-results {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.search-result-item:hover {
+    background: rgba(0, 191, 255, 0.05);
+}
+
+/* Terminal in Light Theme */
+.terminal-app {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.terminal-line {
+    color: #1a1a1a;
+}
+
+.terminal-line .prompt {
+    color: #0066cc;
+}
+
+.terminal-line .command {
+    color: #0055aa;
+}
+
+.terminal-line .output {
+    color: #333333;
+}
+
+.terminal-line .error {
+    color: #cc0000;
+}
+
+.terminal-line .success {
+    color: #008800;
+}
+
+.terminal-line .info {
+    color: #0066cc;
+}
+
+.terminal-line .warning {
+    color: #cc8800;
+}
+
+.terminal-input-line input {
+    color: #1a1a1a;
+}
+
+.terminal-input-line input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Light Theme */
+@media (max-width: 768px) {
+    .glass-light {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
